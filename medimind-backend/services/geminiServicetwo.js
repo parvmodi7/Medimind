@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // Function to get medication suggestions based on partial input
 export const getMedicationSuggestions = async (partialName) => {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `
       As a medical AI assistant, provide a list of 5 common medication names that start with or closely match: "${partialName}".
@@ -36,7 +36,7 @@ export const getMedicationSuggestions = async (partialName) => {
 // Function to get detailed medication information
 export const getMedicationDetails = async (medicationName) => {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `
       Provide comprehensive information about the medication "${medicationName}" in JSON format with the following structure:

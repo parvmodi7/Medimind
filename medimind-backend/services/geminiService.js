@@ -135,7 +135,7 @@ const extractJsonFromResponse = (responseText) => {
 export const generateFollowUpQuestions = async (age, sex, symptoms) => {
   try {
     // Get the generative model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
     // Create the prompt
     const prompt = createFollowUpQuestionsPrompt(age, sex, symptoms);
@@ -157,7 +157,7 @@ export const generateFollowUpQuestions = async (age, sex, symptoms) => {
 export const analyzeSymptoms = async (age, sex, symptoms, followUpAnswers = []) => {
   try {
     // Get the generative model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
     // Create the prompt
     const prompt = createSymptomAnalysisPrompt(age, sex, symptoms, followUpAnswers);
@@ -179,7 +179,7 @@ export const analyzeSymptoms = async (age, sex, symptoms, followUpAnswers = []) 
 export const getConditionDetails = async (condition) => {
   try {
     // Get the generative model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
     // Create the prompt
     const prompt = createConditionDetailsPrompt(condition);
@@ -201,7 +201,7 @@ export const getConditionDetails = async (condition) => {
 export const getTreatmentOptions = async (condition) => {
   try {
     // Get the generative model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
     // Create the prompt
     const prompt = createTreatmentOptionsPrompt(condition);

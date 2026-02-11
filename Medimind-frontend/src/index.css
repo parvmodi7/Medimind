@@ -7,6 +7,11 @@
       font-family: Outfit;
 }
 
+body {
+      background-color: white;
+      color: black;
+}
+
 .active hr{
       @apply block
 }

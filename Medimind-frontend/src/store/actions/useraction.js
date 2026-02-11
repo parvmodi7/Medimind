@@ -86,11 +86,7 @@ export const fetchUserProfile = () => async (dispatch) => {
       dispatch(isUserFail("Please login to continue"));
       return;
     }
-    const { data } = await axios.get("/api/user/user", {
-      headers: {
-        utoken:token
-      }
-    });
+    const { data } = await axios.get("/api/user/user");
     console.log(data,"fetchuserprofile");
     
     if (data?.success) {
@@ -161,11 +157,7 @@ export const deleteUserProfile = (id,enqueueSnackbar) => async (dispatch) => {
       dispatch(isUserFail("Please login to continue"));
       return;
     }
-    const { data } = await axios.get(`/api/v1/user/delete-user/${id}`, {
-      headers: {
-        utoken:token
-      }
-    });
+    const { data } = await axios.get(`/api/v1/user/delete-user/${id}`);
     if (data?.success) {
       
       dispatch(userLogout())
@@ -194,11 +186,7 @@ export const savedDoctorProfile = (id) => async (dispatch) => {
       return;
     }
     console.log("working fine");
-    const { data } = await axios.get(`/api/user/save/${id}`, {
-      headers: {
-        utoken:token
-      }
-    });
+    const { data } = await axios.get(`/api/user/save/${id}`);
     console.log(data,"saveddata");
     
     if (data?.success) {

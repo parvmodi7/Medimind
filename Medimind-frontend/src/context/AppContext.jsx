@@ -11,7 +11,18 @@ const AppContextProvider = (props) => {
 
       const [doctors, setDoctors] = useState([])
       const [doctorsLoaded, setDoctorsLoaded] = useState(false);
-      const [token, setToken] = useState(localStorage.getItem('utoken') ? localStorage.getItem('utoken') : false)
+
+      const getStoredToken = () => {
+            const stored = localStorage.getItem('utoken');
+            if (stored && /^[\x00-\x7F]*$/.test(stored)) {
+                  return stored;
+            } else if (stored) {
+                  localStorage.removeItem('utoken');
+            }
+            return false;
+      };
+
+      const [token, setToken] = useState(getStoredToken())
       const [userData, setUserData] = useState(false)
 
       const getDoctorsData = async () => {
@@ -32,8 +43,8 @@ const AppContextProvider = (props) => {
       const loadUserProfileData = async (req, res) => {
             try {
                   const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { utoken: token } })
-                  console.log(data,"userr");
-                  
+                  console.log(data, "userr");
+
                   if (data.success) {
                         setUserData(data.userData)
                   } else {
